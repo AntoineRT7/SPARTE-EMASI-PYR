@@ -983,6 +983,9 @@ const initials=n=>{const p=norm(n).split(/[\s,]+/).filter(Boolean);if(!p.length)
 const isWE=d=>d.getDay()===0||d.getDay()===6;
 const dKey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const SPECIAL=/^(a re-planifier|vacance|chgt |bdc_)/i;
+// Valeurs de la colonne « Nom-Prénom » qui ne sont PAS de vraies personnes
+// (statuts du logiciel de planning) : on les masque complètement.
+const HIDE_NAME=/^(en attente d.affectation|annul(é|e)|report(é|e)|informations diverses)/i;
 function startOfWeek(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());let g=x.getDay();g=g===0?6:g-1;x.setDate(x.getDate()-g);return x;}
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x;}
 function sameDay(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
@@ -1039,11 +1042,16 @@ function parse(rows){
   for(let i=headerRow+1;i<rows.length;i++){
     const r=rows[i]||[];const nom=norm(r[idx.nom]);const date=toDate(idx.deb!=null?r[idx.deb]:null);
     if(!date){
-      const other=norm(r[idx.lib])||norm(r[idx.com])||(idx.type!=null&&norm(r[idx.type]))||(idx.ress!=null&&norm(r[idx.ress]));
-      if(nom&&nom.toLowerCase()!=='nom-prénom'&&!other)section=nom;
+      // Titre de section : selon le format il est dans la colonne Nom OU dans la colonne Ressource.
+      // On le retient si aucune colonne descriptive (libellé/commentaire/type) n'est remplie.
+      const ress=idx.ress!=null?norm(r[idx.ress]):'';
+      const descr=norm(r[idx.lib])||norm(r[idx.com])||(idx.type!=null?norm(r[idx.type]):'');
+      const title=(nom&&nom.toLowerCase()!=='nom-prénom')?nom:ress;
+      if(title&&!descr)section=title;
       continue;
     }
     if(!nom||nom.toLowerCase()==='nom-prénom')continue;
+    if(HIDE_NAME.test(nom))continue;   // statut (non assigné, annulé, reporté…) : masqué
     entries.push({nom,date,end:idx.fin!=null?toDate(r[idx.fin]):null,lib:norm(r[idx.lib]),com:norm(r[idx.com]),section,
       ress:idx.ress!=null?norm(r[idx.ress]):'',tache:idx.tache!=null?norm(r[idx.tache]):'',charge:idx.charge!=null?norm(r[idx.charge]):''});
   }
