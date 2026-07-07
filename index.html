@@ -535,7 +535,6 @@ html[data-theme="light"] #updateToast{background:rgba(255,255,255,.9)}
 .color-list{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
 .color-row{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:11px;background:var(--glass-2);border:1px solid var(--line)}
 .hide-list{display:flex;flex-direction:column;gap:7px;max-height:340px;overflow-y:auto;margin-top:4px}
-.view-toggle-list{display:flex;flex-direction:column;gap:7px;margin-top:4px}
 .cat-icon-picker{display:flex;flex-direction:column;gap:12px;margin-top:6px}
 .cip-size-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 12px;border-radius:13px;background:var(--glass-2);border:1px solid var(--line);margin-bottom:2px;flex-wrap:wrap}
 .cip-size-label{font-size:12.5px;font-weight:700;color:var(--soft)}
@@ -581,8 +580,6 @@ html[data-theme="light"] .vue-item.on,html[data-theme="light"] .notif-opt{color:
 @media(min-width:901px){.vue-list{max-width:560px;margin:0 auto;width:100%}}
 
 /* ===== Vue Disponibilités ===== */
-.dispo-experimental{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.5;color:var(--soft);
-  background:rgba(255,159,10,.1);border:1px solid rgba(255,159,10,.28);border-radius:13px;padding:11px 13px;margin-bottom:12px}
 .dispo-legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:4px;padding:2px}
 .dispo-legend .dl{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--soft);font-weight:600}
 .dispo-legend .dot{width:11px;height:11px;border-radius:50%}
@@ -877,10 +874,6 @@ html[data-theme="aero"] #fabToday{background:linear-gradient(145deg,#3fd4ff,#0a8
       ".write": "auth != null && auth.token.email == 'admin-emasi-planning@compte.local'"
     },
     "catStyle": {
-      ".read": "auth != null",
-      ".write": "auth != null && auth.token.email == 'admin-emasi-planning@compte.local'"
-    },
-    "enabledViews": {
       ".read": "auth != null",
       ".write": "auth != null && auth.token.email == 'admin-emasi-planning@compte.local'"
     }
@@ -1198,10 +1191,6 @@ html[data-theme="aero"] #fabToday{background:linear-gradient(145deg,#3fd4ff,#0a8
     "catStyle": {
       ".read": "auth != null",
       ".write": "auth != null && auth.token.email == 'admin-emasi-planning@compte.local'"
-    },
-    "enabledViews": {
-      ".read": "auth != null",
-      ".write": "auth != null && auth.token.email == 'admin-emasi-planning@compte.local'"
     }
   }
 }</pre>
@@ -1261,11 +1250,6 @@ html[data-theme="aero"] #fabToday{background:linear-gradient(145deg,#3fd4ff,#0a8
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24M1 1l22 22"/></svg>Masquer des personnes</h3>
         <p>Les personnes masquées disparaissent <b>partout</b> dans l'application (listes, équipe, disponibilités, recherche) pour <b>toute l'équipe</b>.</p>
         <div class="hide-list" id="hideList"></div>
-      </div>
-      <div class="set-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>Vues visibles</h3>
-        <p>Choisissez les vues accessibles à <b>toute l'équipe</b> (décochez pour masquer une vue partout dans l'application).</p>
-        <div class="view-toggle-list" id="viewToggleList"></div>
       </div>
       <div class="set-card">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="M9 11l2 2 4-4"/></svg>Icônes des catégories</h3>
@@ -1362,13 +1346,13 @@ html[data-theme="aero"] #fabToday{background:linear-gradient(145deg,#3fd4ff,#0a8
 /* A REMPLACER par votre configuration Firebase (console -> Parametres du projet -> Vos applications)
    Ces cles sont concues pour etre publiques ; la securite repose sur les Regles de la base. */
 const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDsgRbDhzAA0FL6rSYt-lnWYP5MLOm_6Vc",
-  authDomain: "sparte-emasi.firebaseapp.com",
-  databaseURL: "https://sparte-emasi-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "sparte-emasi",
-  storageBucket: "sparte-emasi.firebasestorage.app",
-  messagingSenderId: "404986559109",
-  appId: "1:404986559109:web:5d26cb2500c9249d8507ec"
+  apiKey: "AIzaSyAzw73-W0ksL9CjNQIK2szL41gXz5WteUk",
+  authDomain: "planning-emasi-pyrenees.firebaseapp.com",
+  databaseURL: "https://planning-emasi-pyrenees-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "planning-emasi-pyrenees",
+  storageBucket: "planning-emasi-pyrenees.firebasestorage.app",
+  messagingSenderId: "810680572543",
+  appId: "1:810680572543:web:d25164a5524571d3a83d4a"
 };
 const DEFAULT_PASSWORD="Admin123!";
 const DEFAULT_ADMIN_PASSWORD="Admin123!";
@@ -1406,9 +1390,9 @@ const DOW=['dim','lun','mar','mer','jeu','ven','sam'];
 const DOW_FULL=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 const WD_NAMES=['Lundi','Mardi','Mercredi','Jeudi','Vendredi'];
 
-const state={entries:[],byPerson:new Map(),people:[],current:null,view:'week',cursor:new Date(),q:'',team:new Map(),color:new Map(),fav:null,generated:'',srcType:'',teamFilter:new Set(),hidden:new Set(),allEntries:[],catIcons:{},catColors:{},iconSize:'md',enabledViews:null};
+const state={entries:[],byPerson:new Map(),people:[],current:null,view:'week',cursor:new Date(),q:'',team:new Map(),color:new Map(),fav:null,generated:'',srcType:'',teamFilter:new Set(),hidden:new Set(),allEntries:[],catIcons:{},catColors:{},iconSize:'md'};
 const PALETTE=['#0a84ff','#ff9f0a','#30d158','#ff375f','#bf5af2','#64d2ff','#ffd60a','#ff6482','#5e5ce6','#40c8e0','#ac8e68','#32d74b','#ff6b22','#66d4cf','#da8fff','#a2845e','#ff453a','#7d7aff','#ffd426','#5ac8fa'];
-const APP_VERSION="v40";
+const APP_VERSION="v38";
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
@@ -1659,7 +1643,7 @@ function renderToday(){
         ${catBadge(categorize(e))}
         ${e.section?`<span class="tag">${esc(e.section)}</span>`:''}
         ${timeStr?`<span class="today-time">${timeStr}</span>`:''}
-        <div class="today-lib">${esc(e.lib||e.section||e.tache||'Affectation')}</div>
+        <div class="today-lib">${esc(e.lib||e.section||'Affectation')}</div>
         ${e.com?`<div class="today-com">${comHTML(e.com)}</div>`:''}
         <div class="today-team">
           <div class="tt-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>${tm.length?`Sur le terrain avec ${tm.length} personne${tm.length>1?'s':''}`:'En autonomie'}</div>
@@ -1706,7 +1690,7 @@ function renderTeam(){
       html+='<div class="team-rows">';
       for(const e of dayEntries){
         const col=state.color.get(e.nom)||'#8a93a6';
-        const label=e.lib||e.section||e.tache||e.com.slice(0,60)||'Affectation';
+        const label=e.lib||e.section||e.com.slice(0,60)||'Affectation';
         const t=fmtTime(e.date);
         html+=`<div class="trow" data-id="${e._id}">
           <span class="tp"><span class="av-mini" style="background:${col}26;color:${textCol(col)}">${initials(e.nom)}</span><span class="pn">${esc(e.nom)}</span></span>
@@ -1822,25 +1806,6 @@ function saveCatStyleToFb(){
   if(!fbReady){alert('Firebase non connecté : le choix ne sera pas partagé.');return Promise.resolve();}
   return fbSet('catStyle',{colors:state.catColors,size:state.iconSize}).catch(err=>alert('Échec enregistrement : '+err));
 }
-const ALL_VIEWS=['today','week','agenda','month','team','chantiers','dispo'];
-function isViewEnabled(v){ return !state.enabledViews || state.enabledViews[v]!==false; }
-function loadEnabledViewsFromFb(){
-  if(!fbReady)return Promise.resolve();
-  return fbGet('enabledViews').then(o=>{state.enabledViews=(o&&typeof o==='object')?o:null;}).catch(()=>{});
-}
-function saveEnabledViewsToFb(){
-  if(!fbReady){alert('Firebase non connecté : le choix ne sera pas partagé.');return Promise.resolve();}
-  return fbSet('enabledViews',state.enabledViews).catch(err=>alert('Échec enregistrement : '+err));
-}
-function applyEnabledViews(){
-  document.querySelectorAll('#viewSeg button[data-v]').forEach(b=>{b.style.display=isViewEnabled(b.dataset.v)?'':'none';});
-  // si la vue actuellement affichée vient d'être désactivée, basculer sur la première vue encore disponible
-  if(!isViewEnabled(state.view)){
-    const fallback=ALL_VIEWS.find(v=>isViewEnabled(v))||'today';
-    state.view=fallback;
-    document.querySelectorAll('#viewSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===fallback));
-  }
-}
 
 /* nom lisible d'un chantier : Section (vrai nom) > Libellé > Tâche (code) */
 function chantierName(e){
@@ -1946,7 +1911,7 @@ function renderDispo(){
   document.getElementById('periodLbl').textContent='Semaine du '+lbl;
   const reals=state.people.filter(n=>!SPECIAL.test(n));
   const today=new Date();
-  let html='<div class="chan-wrap"><div class="dispo-experimental">⚠️ <b>Fonctionnalité expérimentale</b> — la détection « Libre / Mobilisable » dépend de la façon dont l\'export Sparte a été réalisé (libellés, tâches, codes utilisés). Vérifiez les résultats avant de vous y fier entièrement.</div><div class="dispo-legend"><span class="dl"><span class="dot" style="background:#30d158"></span>Libre (rien de prévu)</span><span class="dl"><span class="dot" style="background:#ff9f0a"></span>Mobilisable (dépannage / temps réel)</span></div>';
+  let html='<div class="chan-wrap"><div class="dispo-legend"><span class="dl"><span class="dot" style="background:#30d158"></span>Libre (rien de prévu)</span><span class="dl"><span class="dot" style="background:#ff9f0a"></span>Mobilisable (dépannage / temps réel)</span></div>';
   let scrollId=null;
   for(let i=0;i<5;i++){
     const d=addDays(mon,i);const isT=sameDay(d,today);if(isT)scrollId='dispoDay'+i;
@@ -2008,7 +1973,7 @@ function renderWeek(){
     if(!evs.length)html+='<div class="wcol-empty">—</div>';
     else for(const e of evs){
       const tm=teammates(e);
-      const label=e.lib||e.section||e.tache||e.com.slice(0,60)||'Affectation';
+      const label=e.lib||e.section||e.com.slice(0,60)||'Affectation';
       const t=fmtTime(e.date);
       html+=`<div class="wcard" data-id="${e._id}">${catBadge(categorize(e),18)}<div class="wl">${esc(label)}</div>
         <div class="wt">${e.tache?esc(e.tache):''}${(e.tache&&t)?' · ':''}${t?`<span class="wt-time">${t}</span>`:''}</div>
@@ -2123,7 +2088,7 @@ function renderMonth(){
     const max=3;
     evs.slice(0,max).forEach(e=>{
       const col=state.color.get(e.nom)||'var(--blue)';
-      const label=e.lib||e.section||e.tache||e.com.slice(0,40)||'Affectation';
+      const label=e.lib||e.section||e.com.slice(0,40)||'Affectation';
       html+=`<div class="pill" data-id="${e._id}" title="${esc(label)}"><span class="pdot" style="background:${col}"></span><span class="pl">${esc(label)}</span></div>`;
     });
     if(evs.length>max)html+=`<div class="pill more" data-more="${dd}">+${evs.length-max}</div>`;
@@ -2151,7 +2116,7 @@ function openAction(id){
   const t=fmtTime(e.date),tEnd=fmtTime(e.end);const timeStr=t?(tEnd?`${t} – ${tEnd}`:t):'';
   let html='';
   html+=`<div>${e.section?`<span class="tag" style="display:inline-block;margin-bottom:8px">${esc(e.section)}</span>`:''}
-    <div class="det-lib">${esc(e.lib||e.section||e.tache||'Affectation')}</div></div>`;
+    <div class="det-lib">${esc(e.lib||e.section||'Affectation')}</div></div>`;
   html+=`<div class="det-meta">
     <span>👤 ${esc(e.nom)}</span>
     ${timeStr?`<span>🕒 ${timeStr}</span>`:''}
@@ -2200,7 +2165,7 @@ function runGlobalSearch(){
   }
   cnt.textContent=res.length?`${res.length} résultat${res.length>1?'s':''}${res.length>=200?'+ (affinez la recherche)':''}`:'Aucun résultat.';
   box.innerHTML=res.map(e=>{
-    const label=e.lib||e.section||e.tache||'Affectation';
+    const label=e.lib||e.section||'Affectation';
     return `<div class="sresult" data-id="${e._id}">
       <div class="sr-top"><span class="av" style="width:24px;height:24px;font-size:10px">${initials(e.nom)}</span>
         <span class="sr-name">${esc(e.nom)}</span>
@@ -2258,7 +2223,6 @@ function showApp(){
   document.getElementById('app').style.display='grid';
   ['searchTop','settingsTop','clock'].forEach(id=>document.getElementById(id).style.display='flex');
   syncNav();renderStats();renderPeople();
-  applyEnabledViews();
   maybeShowUpdateToast();
   // favori : si défini et présent dans les données -> affichage direct
   const fav=lsGet('fav_person');
@@ -2547,8 +2511,7 @@ const VIEW_LABEL={today:'Ma journée',week:'Semaine',agenda:'Agenda',month:'Mois
 const VIEW_DESC={today:'Mes interventions du jour',week:'Lundi à vendredi',agenda:'Liste chronologique',month:'Calendrier mensuel',team:'Toute l\'équipe, par couleur',chantiers:'Par chantier et par jour',dispo:'Agents libres ou mobilisables'};
 function openVuePicker(){
   const box=document.getElementById('vueList');box.innerHTML='';
-  for(const v of ALL_VIEWS){
-    if(!isViewEnabled(v))continue;
+  for(const v of ['today','week','agenda','month','team','chantiers','dispo']){
     const b=document.createElement('button');b.className='vue-item'+(state.view===v?' on':'');
     b.innerHTML=`<span class="vi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${VIEW_ICON[v]}</svg></span>
       <span><span class="vi-t">${VIEW_LABEL[v]}</span><span class="vi-d">${VIEW_DESC[v]}</span></span>
@@ -2607,7 +2570,7 @@ function requestAdmin(){
     }
   });
 }
-function openAdmin(){hideSettings();renderColorList();renderHideList();renderCatIconPicker();renderViewToggleList();adminDataInfoFill();fillFbFields();
+function openAdmin(){hideSettings();renderColorList();renderHideList();renderCatIconPicker();adminDataInfoFill();fillFbFields();
   const fbs=document.getElementById('adminFbState');
   if(fbs)fbs.textContent=fbReady?'Firebase connecté : les publications sont partagées avec toute l\'équipe.':'Firebase non connecté : renseignez la configuration ci-dessus.';
   const pfs=document.getElementById('pwFbState');
@@ -2686,26 +2649,6 @@ function renderCatIconPicker(){
     renderCatIconPicker();
     renderMain();
   });
-}
-function renderViewToggleList(){
-  const box=document.getElementById('viewToggleList');if(!box)return;box.innerHTML='';
-  for(const v of ALL_VIEWS){
-    const on=isViewEnabled(v);
-    const row=document.createElement('div');row.className='hide-row';
-    row.innerHTML=`<span class="tp" style="display:flex;align-items:center;gap:10px">
-        <span class="cat-badge" style="width:26px;height:26px;background:rgba(10,132,255,.14);color:var(--blue-2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${VIEW_ICON[v]}</svg></span>
-        <span class="hr-name">${esc(VIEW_LABEL[v])}</span>
-      </span>
-      <button class="hr-toggle${on?' on':''}" role="switch" aria-checked="${on}"><span class="hr-knob"></span></button>`;
-    row.querySelector('.hr-toggle').onclick=()=>{
-      state.enabledViews=state.enabledViews?{...state.enabledViews}:Object.fromEntries(ALL_VIEWS.map(x=>[x,true]));
-      state.enabledViews[v]=!isViewEnabled(v);
-      saveEnabledViewsToFb();
-      renderViewToggleList();
-      applyEnabledViews();
-    };
-    box.appendChild(row);
-  }
 }
 function renderHideList(){
   const box=document.getElementById('hideList');if(!box)return;box.innerHTML='';
@@ -2859,7 +2802,7 @@ if('serviceWorker' in navigator){
 
 /* ---- Verrou + configuration d'équipe ---- */
 let teamName="Planning";
-function startApp(){ Promise.all([loadHiddenFromFb(),loadCatIconsFromFb(),loadCatStyleFromFb(),loadEnabledViewsFromFb()]).then(autoLoad).catch(autoLoad); }
+function startApp(){ Promise.all([loadHiddenFromFb(),loadCatIconsFromFb(),loadCatStyleFromFb()]).then(autoLoad).catch(autoLoad); }
 function shakeLock(msg){
   const er=document.getElementById('lockErr');er.textContent=msg||'Code incorrect.';document.getElementById('lockInput').value='';
   const card=document.querySelector('#lock .lock-card');card.animate([{transform:'translateX(0)'},{transform:'translateX(-7px)'},{transform:'translateX(7px)'},{transform:'translateX(0)'}],{duration:240});
