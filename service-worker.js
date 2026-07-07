@@ -1,5 +1,5 @@
 // Service worker — cache l'app et les données pour un usage hors-ligne
-const CACHE = 'planning-v19';
+const CACHE = 'planning-v38';
 const ASSETS = [
   '.',
   'index.html',
@@ -7,19 +7,17 @@ const ASSETS = [
   'manifest.webmanifest',
   'icons/icon-192.png',
   'icons/icon-512.png',
-  'icons/icon-512-maskable.png',
+  'wallpapers/aqua.jpg',
+  'wallpapers/sunset.jpg',
+  'wallpapers/forest.jpg',
+  'wallpapers/lavender.jpg',
+  'wallpapers/mono.jpg',
+  'wallpapers/aero-dark.jpg',
   'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'
 ];
 
 self.addEventListener('install', e => {
-  // IMPORTANT : on met chaque ressource en cache individuellement.
-  // Si l'une échoue (ex. icône absente), le service worker s'installe quand même
-  // -> l'application reste installable. (addAll() échouait en bloc auparavant.)
-  e.waitUntil(
-    caches.open(CACHE).then(c =>
-      Promise.allSettled(ASSETS.map(url => c.add(url)))
-    ).then(() => self.skipWaiting())
-  );
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -32,8 +30,8 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
-  // Les données et la config d'équipe : réseau d'abord (pour récupérer une mise à jour), cache en secours.
-  if (url.pathname.endsWith('planning-data.json') || url.pathname.endsWith('config.json')) {
+  // Les données : réseau d'abord (pour récupérer une mise à jour), cache en secours.
+  if (url.pathname.endsWith('planning-data.json')) {
     e.respondWith(
       fetch(e.request).then(res => {
         const copy = res.clone();
